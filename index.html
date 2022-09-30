@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+
+    <!-- use babel -> JavaScript compiler(ES6+ js, JSX, typescript) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById('root');
+
+        // use JSX -> Javascript 확장 문법
+        //const Button = () => <button onClick = {() => console.log('button click')}>Click me</button>;
+        
+        /*
+        const h3 = React.createElement(
+            'h3', 
+            {
+                id:'title', style:{color : 'red'}
+            },
+            'Hello, I am a span'
+            );   
+
+        const button = React.createElement(
+            'button', 
+            {
+                onClick: () => console.log('button click')
+            }, 
+            'Click me'
+            );
+
+        const div = React.createElement('div', null, [Title, Button]);
+
+        react.js -> make interactive UI
+        react-dom -> React.createElement 를 HTML에 두는 역할
+        */
+        
+        let counter = 0;
+        
+        function countUp() {
+            counter = counter + 1;
+            render();
+        }
+
+        function render() {
+            ReactDOM.render(<Container/>, root);
+        }
+
+        const Container = () => (
+            <div>
+                <h3>Total click: {counter}</h3>
+                <button onClick={countUp}>Click me</button>
+            </div>
+        );
+
+         render();
+        
+    </script>
+    </html>
