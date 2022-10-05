@@ -37,25 +37,23 @@
         react-dom -> React.createElement 를 HTML에 두는 역할
         */
         
-        let counter = 0;
-        
-        function countUp() {
-            counter = counter + 1;
-            render();
+        function App() {
+            const [counter, setCounter] = React.useState(0);
+
+            const onClick = () => {
+                //setCounter(counter+1);
+                setCounter((current) => current+1);
+            }
+
+            return(
+                <div>
+                    <h3>Total click: {counter}</h3>
+                    <button onClick={onClick}>Click me</button>
+                </div>
+            );
         }
 
-        function render() {
-            ReactDOM.render(<Container/>, root);
-        }
-
-        const Container = () => (
-            <div>
-                <h3>Total click: {counter}</h3>
-                <button onClick={countUp}>Click me</button>
-            </div>
-        );
-
-         render();
+        ReactDOM.render(<App/>, root);
         
     </script>
     </html>
